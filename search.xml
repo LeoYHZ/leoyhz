@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title><![CDATA[多系统同步Hexo博客]]></title>
+    <url>%2F2018%2F04%2F05%2F%E5%A4%9A%E7%B3%BB%E7%BB%9F%E5%90%8C%E6%AD%A5Hexo%E5%8D%9A%E5%AE%A2%2F</url>
+    <content type="text"><![CDATA[本文章借鉴于网络各个大神的方法 多系统同步更新Hexo博客 此时将Hexo安装在Windows的系统上时候，参考这篇教程；安装到linux(以ubuntu/debian为例)上的时候，使用这一篇教程即可。 然后就是文件之间的共享了。 因为linux的内核可读写多种文件系统，如：Fat,NTFS,Vfat,Fat32以及Hfs等，因此在linux下访问Windows下的文件就比Windows下简单的多，无需专门软件，直接使用命令行就可以了，并且大多数提供图形界面的linux系统都可以直接通过内置的文件管理进行查看。找到文件夹后直接在终端选中该文件夹进行命令操作即可。 但是在Windows下面访问ext2以及reiserfs分区则相对麻烦一些。绝大多数的linux系统安装之后是不会在Windows环境下以X盘的形式显示出来的，这时我们就要借助一些软件了。比较推荐的就是 explore2fs 了，自行百度就能找到，安装运行即可。另一种方法就是使用高级资源管理器Total Commander加Ext2+Reiser 插件实现Ext2和Reiser FS分区的只读访问，安装后运行Total Command选择配置－－插件－－文件系统插件－－配置－－添加－－找到ex2fs.wfx并添加，最后“确定”添加成功即可。 上面的方法虽然可行，但是配置使用起来因人而异，但最后一种绝对简单易用。那就是把blog的文件夹拷贝到U盘中，每一次修改博客之后，将修改后的配置文件或则博文替换相应位置即可。PS：简单粗暴，换了电脑也不怕，正在使用中。 最后一种就是一劳永逸，绝对方便的了。在github中新建一个分支，把blog中所有源码实时更新。 正在学习使用，待更新]]></content>
+      <tags>
+        <tag>多系统</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Hello World]]></title>
+    <url>%2F2018%2F04%2F05%2Fhello-world%2F</url>
+    <content type="text"><![CDATA[欢迎来到Hexo！这是你的第一篇文章。点击文档获取更多信息。如果你使用Hexo时有任何问题,你可以在该网址上找到解决方案或者在GitHub上询问我。 快速启动创建一个新的帖子1$ hexo new "My New Post" 更多信息: write 运行服务器1$ hexo server 更多信息: Server 生成静态文件1$ hexo generate 更多信息: Generating 部署到远程站点1$ hexo deploy 更多信息: Deployment]]></content>
+  </entry>
+  <entry>
+    <title><![CDATA[密码浏览]]></title>
+    <url>%2F2018%2F03%2F24%2F%E5%AF%86%E7%A0%81%E6%B5%8F%E8%A7%88%2F</url>
+    <content type="text"><![CDATA[密码测试 本文章仅仅为了测试密码系统 呜啦啦啦 看不到哦]]></content>
+      <tags>
+        <tag>测试</tag>
+      </tags>
+  </entry>
+</search>

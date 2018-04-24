@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-04-14T16:12:53.681Z</updated>
+  <updated>2018-04-24T15:14:09.027Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Java代码</title>
+    <link href="http://yoursite.com/2018/04/24/Java%E4%BB%A3%E7%A0%81/"/>
+    <id>http://yoursite.com/2018/04/24/Java代码/</id>
+    <published>2018-04-24T15:08:53.679Z</published>
+    <updated>2018-04-24T15:14:09.027Z</updated>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>学习过程中打的代码<br><a id="more"></a></p><h1 id="随机数配对"><a href="#随机数配对" class="headerlink" title="随机数配对"></a>随机数配对</h1><p>package java_learning;</p><p>public class HelloWorld {<br>    public static void main (String [] args) {<br>        SimpleDotCom wulala=new SimpleDotCom();<br>        wulala.test();<br>    }<br>public static class SimpleDotCom {<br>        int[] cell= new int[3];<br>        void test() {<br>            int i=0;<br>            int j=(int) (Math.random()*10);<br>            while(i&lt;3) {<br>                cell[i]=i+5;<br>                System.out.println(“cell[“+i+”]=”+cell[i]+” “+j);<br>                if(cell[i]==j) {<br>                    System.out.println(“bingo”);<br>                    break;<br>                    }<br>                else<br>                    System.out.println(“wakaka”);<br>                i+=1;<br>            }<br>        }<br>    }<br>}</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;学习过程中打的代码&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="Java学习记录" scheme="http://yoursite.com/tags/Java%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
+    
+  </entry>
   
   <entry>
     <title>hexo command not found</title>

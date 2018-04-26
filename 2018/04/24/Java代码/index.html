@@ -106,7 +106,7 @@
 <meta property="og:site_name" content="LeoYang&#39;s Blog">
 <meta property="og:description" content="学习过程中打的代码">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-26T06:52:44.423Z">
+<meta property="og:updated_time" content="2018-04-26T07:39:19.740Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java代码">
 <meta name="twitter:description" content="学习过程中打的代码">
@@ -366,35 +366,42 @@
 
       
         <link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>学习过程中打的代码<br><a id="more"></a></p>
-<h1 id="随机数配对"><a href="#随机数配对" class="headerlink" title="随机数配对"></a>随机数配对</h1><p>package java_learning;</p>
-<p>public class HelloWorld {<br>    public static void main (String [] args) {<br>        SimpleDotCom wulala=new SimpleDotCom();<br>        wulala.test();<br>    }<br>public static class SimpleDotCom {<br>        int[] cell= new int[3];<br>        void test() {<br>            int i=0;<br>            int j=(int) (Math.random()*10);<br>            while(i&lt;3) {<br>                cell[i]=i+5;<br>                System.out.println(“cell[“+i+”]=”+cell[i]+” “+j);<br>                if(cell[i]==j) {<br>                    System.out.println(“bingo”);<br>                    break;<br>                    }<br>                else<br>                    System.out.println(“wakaka”);<br>                i+=1;<br>            }<br>        }<br>    }<br>}</p>
-<h1 id="数据配对测试"><a href="#数据配对测试" class="headerlink" title="数据配对测试"></a>数据配对测试</h1><p>package java_learning;</p>
-<p>public class HelloWorld {<br>    public static void main (String [] args) {<br>        SimpleDotCom dot = new SimpleDotCom();<br>        int[] locations= {2,3,4};<br>        dot.setLocationCells(locations);<br>        String userGuess=”2”;<br>        String result=dot.checkYourself(userGuess);<br>    }<br>    public static class SimpleDotCom{</p>
-<pre><code>    int[] locationCells;
-    int numOfHits=0;
-
-    public void setLocationCells(int[] locs) {
-        locationCells=locs;
+<h1 id="数据配对测试"><a href="#数据配对测试" class="headerlink" title="数据配对测试"></a>数据配对测试</h1><pre><code>
+package java_learning;
+public class HelloWorld {
+    public static void main (String [] args) {
+        SimpleDotCom dot = new SimpleDotCom();
+        int[] locations= {2,3,4};
+        dot.setLocationCells(locations);
+        String userGuess="2";
+        String result=dot.checkYourself(userGuess);
     }
-    public String checkYourself(String stringGuess) {
-        int guess=Integer.parseInt(stringGuess);
-        String result=&quot;miss&quot;;
-        for(int cell:locationCells) {
-            if(guess==cell) {
-                result=&quot;hit&quot;;
-                numOfHits++;
-                break;
+    public static class SimpleDotCom{
+        int[] locationCells;
+        int numOfHits=0;
+
+        public void setLocationCells(int[] locs) {
+            locationCells=locs;
+        }
+        public String checkYourself(String stringGuess) {
+            int guess=Integer.parseInt(stringGuess);
+            String result="miss";
+            for(int cell:locationCells) {
+                if(guess==cell) {
+                    result="hit";
+                    numOfHits++;
+                    break;
+                }
             }
+            if (numOfHits==locationCells.length) {
+                result="kill";
+            }
+            System.out.println(result);
+            return result;
         }
-        if (numOfHits==locationCells.length) {
-            result=&quot;kill&quot;;
-        }
-        System.out.println(result);
-        return result;
     }
 }
-</code></pre><p>}</p>
-
+</code></pre>
       
     </div>
     
@@ -591,7 +598,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#随机数配对"><span class="nav-number">1.</span> <span class="nav-text">随机数配对</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数据配对测试"><span class="nav-number">2.</span> <span class="nav-text">数据配对测试</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#数据配对测试"><span class="nav-number">1.</span> <span class="nav-text">数据配对测试</span></a></li></ol></div>
             
 
           </div>

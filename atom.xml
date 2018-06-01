@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-05-19T09:44:51.753Z</updated>
+  <updated>2018-06-01T12:09:16.828Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,46 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Deepin引导问题</title>
+    <link href="http://yoursite.com/2018/06/01/Deepin%E5%BC%95%E5%AF%BC%E9%97%AE%E9%A2%98/"/>
+    <id>http://yoursite.com/2018/06/01/Deepin引导问题/</id>
+    <published>2018-06-01T12:02:30.431Z</published>
+    <updated>2018-06-01T12:09:16.828Z</updated>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>Deepin引导失败原因之一<br><a id="more"></a><br>Deepin引导失败后，在开机界面显示以下文字</p><p>search.fs_uuid 63940a4a-5f46-4ac7-b196-84c6b22b8338 root hd1,gpt5<br>set prefix=($root)’/boot/grub’<br>configfile $prefix/grub.cfg</p><p>deepin 使用的ubuntu的引导进行美化 所以会产生一个ubnutu的文件夹 不要误删  efi/boot文件夹下的.cfg文件上配置文件  其中的uuid必须对齐对应的分区才能开机（不同电脑 不同系统的uuid不相同 该文字为本机Deepin系统对应的uuid）</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Deepin引导失败原因之一&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="Linux问题记录" scheme="http://yoursite.com/tags/Linux%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java笔记</title>
+    <link href="http://yoursite.com/2018/06/01/Java%E7%AC%94%E8%AE%B0/"/>
+    <id>http://yoursite.com/2018/06/01/Java笔记/</id>
+    <published>2018-06-01T11:54:15.374Z</published>
+    <updated>2018-06-01T12:00:52.758Z</updated>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>学习Java过程中的随笔<br><a id="more"></a></p><h2 id="随手记录"><a href="#随手记录" class="headerlink" title="随手记录"></a>随手记录</h2><p>Java程序以main来运行的话  只能有一个public class开头的类  其他的都应该用class开头</p><p>Java中的数组，变量，对象等引用的步骤：1声明  2创建  3赋值</p><p>Java对象数组的调用 Echo hi[] = new Echo[6]; hi[0] = new Echo(); hi[0].hello(); 使用的时候应当对整个对象数组创建后 再对单个的对象进行创建赋值才能使用</p><p>Java中char后加单引号’’可存放一位汉字或则一位英语字母  字符串使用String来创建 后加双引号””<br>使用Integer.parseInt()来取得String的整数值，Integer.parseInt()只会在所给的String为数字时有作用。浮点数(浮点数数据后要加f，否则系统会识别为double型)转换为整型时使用float b=5.2f; int a=(int) b;即可。</p><p>Java中如果想要把类定义为抽象类的时候，在前面加上abstract即可。抽象的类代表此类必须被extends过，抽象的方法代表此方法一定要被覆盖过，并且一定位于抽象的类下面（抽象的方法没有实体 例:pubic abstract void eat(); ）。</p><p>抽象的方法没有内容，它只是为了标记出多态而存在的。这表示在继承树结构下的第一个具体类必须要实现所有的抽象方法。</p><p>public class 子类 extends 父类 inplements 接口</p><p>super.在子类可以调用父类中的构造方法(对其的调用必须是构造函数的第一个语句)this() 就是调用自己的无参构造方法，和super()一个道理。this就是指本对象自身。<br>因为this和super都是第一个语句，二者只能有一个存在。</p><p>实例变量就是类中直接定义的变量，局部变量就是方法中的过程量，静态变量就是加static的变量（定义在类中，但是不在方法中，位置类似实例变量）<br>调用静态的方法要使用类的名称  调用非静态的方法要使用引用变量的名称</p><p>静态的final的变量的初始化(final一定要初始化)：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">1：public class Foo&#123;</span><br><span class="line">public static final int FOO_X=25;</span><br><span class="line">   &#125;</span><br><span class="line">2: public class Bar&#123;</span><br><span class="line">public static final double BAR_SIGN;</span><br><span class="line">static&#123;</span><br><span class="line">BAR_SIGN=(double) Math.random();</span><br><span class="line">&#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure></p><p>“&lt;”这个符号是个特殊的指示，告诉格式化程序重复之前用过的参数，例：String.format(“%tA %tB %td”,today,today,today);等于String.format(“%tA %&lt;tB %&lt;td”,today);</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;学习Java过程中的随笔&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="Java学习记录" scheme="http://yoursite.com/tags/Java%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
+    
+  </entry>
   
   <entry>
     <title>Java代码</title>

@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[Deepin引导问题]]></title>
     <url>%2F2018%2F06%2F01%2FDeepin%E5%BC%95%E5%AF%BC%E9%97%AE%E9%A2%98%2F</url>
-    <content type="text"><![CDATA[Deepin引导失败原因之一Deepin引导失败后，在开机界面显示以下文字 search.fs_uuid 63940a4a-5f46-4ac7-b196-84c6b22b8338 root hd1,gpt5set prefix=($root)’/boot/grub’configfile $prefix/grub.cfg deepin 使用的ubuntu的引导进行美化 所以会产生一个ubnutu的文件夹 不要误删 efi/boot文件夹下的.cfg文件上配置文件 其中的uuid必须对齐对应的分区才能开机（不同电脑 不同系统的uuid不相同 该文字为本机Deepin系统对应的uuid）]]></content>
+    <content type="text"><![CDATA[Deepin引导失败原因之一Deepin引导失败后，在开机界面显示以下文字 search.fs_uuid 63940a4a-5f46-4ac7-b196-84c6b22b8338 root hd1,gpt5set prefix=($root)’/boot/grub’configfile $prefix/grub.cfg deepin 使用的ubuntu的引导进行美化 所以会产生一个ubuntu的文件夹 不要误删 efi/boot文件夹下的.cfg文件上配置文件 其中的uuid必须对齐对应的分区才能开机（不同电脑 不同系统的uuid不相同 该文字为本机Deepin系统对应的uuid）]]></content>
       <tags>
         <tag>Linux问题记录</tag>
       </tags>

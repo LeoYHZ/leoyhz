@@ -83,10 +83,12 @@
 
 
 
-  <meta name="keywords" content="hexo bug," />
+  <meta name="keywords" content="即时通讯APP开发," />
 
 
 
+
+  
 
 
   <link rel="alternate" href="/atom.xml" title="LeoYang's Blog" type="application/atom+xml" />
@@ -96,18 +98,18 @@
 
 
 
-<meta name="description" content="hexo 出现 command not found 的问题">
-<meta name="keywords" content="hexo bug">
+<meta name="description" content="Debian9安装配置Openfire在Debian9的服务器中安装并配置Openfire（该教程使用MySQL数据库进行数据存储）">
+<meta name="keywords" content="即时通讯APP开发">
 <meta property="og:type" content="article">
-<meta property="og:title" content="hexo command not found">
-<meta property="og:url" content="http://yoursite.com/2018/04/15/hexo command not found/index.html">
+<meta property="og:title" content="debian9安装配置openfire">
+<meta property="og:url" content="http://yoursite.com/2019/09/02/debian9安装配置openfire/index.html">
 <meta property="og:site_name" content="LeoYang&#39;s Blog">
-<meta property="og:description" content="hexo 出现 command not found 的问题">
+<meta property="og:description" content="Debian9安装配置Openfire在Debian9的服务器中安装并配置Openfire（该教程使用MySQL数据库进行数据存储）">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-26T07:32:25.314Z">
+<meta property="og:updated_time" content="2019-09-02T09:30:46.288Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="hexo command not found">
-<meta name="twitter:description" content="hexo 出现 command not found 的问题">
+<meta name="twitter:title" content="debian9安装配置openfire">
+<meta name="twitter:description" content="Debian9安装配置Openfire在Debian9的服务器中安装并配置Openfire（该教程使用MySQL数据库进行数据存储）">
 
 
 
@@ -138,7 +140,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/04/15/hexo command not found/"/>
+  <link rel="canonical" href="http://yoursite.com/2019/09/02/debian9安装配置openfire/"/>
 
 
 
@@ -154,7 +156,7 @@
   daovoice('update');
   </script>
 
-  <title>hexo command not found | LeoYang's Blog</title>
+  <title>debian9安装配置openfire | LeoYang's Blog</title>
   
 
 
@@ -309,7 +311,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/15/hexo command not found/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/02/debian9安装配置openfire/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Leo Yang">
@@ -326,7 +328,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">hexo command not found</h1>
+          <h1 class="post-title" itemprop="name headline">debian9安装配置openfire</h1>
         
 
         <div class="post-meta">
@@ -338,8 +340,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-15T00:12:38+08:00">
-                2018-04-15
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-02T17:02:03+08:00">
+                2019-09-02
               </time>
             
 
@@ -376,11 +378,16 @@
       
 
       
-        <link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>hexo 出现 command not found 的问题</p>
-<a id="more"></a>
-<h1 id="node-command-not-found或则npm-command-not-found问题"><a href="#node-command-not-found或则npm-command-not-found问题" class="headerlink" title="node : command not found或则npm : command not found问题"></a>node : command not found或则npm : command not found问题</h1><p>本周因为忙于JAVA的学习而忘记了我的<a href="http://www.yanghaizhou.top/" target="_blank" rel="noopener">Blog</a>。今天打开博客进行文章的上传时，才发现出现了 node : command not found 的问题，在百度上搜索后，有人说重新安装Hexo即可，但是一试更可怕，连npm的指令都不能使用了。</p>
-<p>于是想到是不是因为前一段时间配置java环境的原因，就在搜索时加上了java，便找到了<a href="https://blog.csdn.net/whjkm/article/details/42675579" target="_blank" rel="noopener">这位博主的博客</a>。与我经历极其相似，于是便试了一下，发现我的类似目录加到环境变量PATH路径的后面并不行。于是把每一个含有Hexo以及npm的文件夹都试了一遍，最后发现把Node.js安装目录添加到环境变量PATH路径的后面就可以了。</p>
-<h2 id="注意：一定是Node-js的安装目录"><a href="#注意：一定是Node-js的安装目录" class="headerlink" title="注意：一定是Node.js的安装目录"></a>注意：一定是Node.js的安装目录</h2><h2 id="PS：环境变量的解释"><a href="#PS：环境变量的解释" class="headerlink" title="PS：环境变量的解释"></a>PS：环境变量的解释</h2><p>环境变量是在操作系统中一个具有特定名字的对象，它包含了一个或者多个应用程序所将使用到的信息。例如Windows和DOS操作系统中的path环境变量，当要求系统运行一个程序而没有告诉它程序所在的完整路径时，系统除了在当前目录下面寻找此程序外，还应到path中指定的路径去找。用户通过设置环境变量，来更好的运行进程。<br>环境变量一般是指在操作系统中用来指定操作系统运行环境的一些参数，比如临时文件夹位置和系统文件夹位置等。</p>
+        <link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="Debian9安装配置Openfire"><a href="#Debian9安装配置Openfire" class="headerlink" title="Debian9安装配置Openfire"></a>Debian9安装配置Openfire</h1><p>在Debian9的服务器中安装并配置Openfire（该教程使用MySQL数据库进行数据存储）</p>
+ <a id="more"></a>
+<h2 id="准备工作："><a href="#准备工作：" class="headerlink" title="准备工作："></a>准备工作：</h2><p>1：服务器已经安装MySQL；</p>
+<p>2：服务器已经配置好java环境；</p>
+<h2 id="具体教程："><a href="#具体教程：" class="headerlink" title="具体教程："></a>具体教程：</h2><p>1：Openfire的下载及安装</p>
+<p>在openfire的<a href="http://www.igniterealtime.org/downloads/index.jsp" target="_blank" rel="noopener">下载网站</a>中，有Windows、Linux以及Mac版本的openfire下载，直接下载最新版本（本文更新时为Openfire 4.4.1版本）即可。</p>
+<p>官网对Linux发布了不同格式的安装包，对于Debian和Ubuntu的操作系统可以直接下载deb格式的安装包进行安装，本文中使用的是tar.gz的压缩格式进行安装，可以更清晰的了解到所需的配置文件的具体位置。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># deb格式进行安装</span></span><br><span class="line">wget -c http://download.igniterealtime.org/openfire/openfire_4.4.1_all.deb</span><br><span class="line">sudo dpkg -i openfire_4.4.1_all.deb</span><br><span class="line"><span class="comment"># tar.gz格式进行安装</span></span><br><span class="line">wget -c http://download.igniterealtime.org/openfire/openfire_4_4_1.tar.gz</span><br><span class="line">tar -zxvf openfire_4_4_1.tar.gz</span><br></pre></td></tr></table></figure>
+<p>2：配置Openfire</p>
+<p>本文介绍的是使用tar.gz的压缩格式进行安装的Openfire的配置，对于其他安装方式的进行类比即可。</p>
 
       
     </div>
@@ -398,7 +405,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/hexo-bug/" rel="tag"># hexo bug</a>
+            <a href="/tags/即时通讯APP开发/" rel="tag"># 即时通讯APP开发</a>
           
         </div>
       
@@ -411,8 +418,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/03/25/多系统同步Hexo博客/" rel="next" title="多系统同步Hexo博客">
-                <i class="fa fa-chevron-left"></i> 多系统同步Hexo博客
+              <a href="/2019/07/10/Linux同步时间/" rel="next" title="Linux同步时间">
+                <i class="fa fa-chevron-left"></i> Linux同步时间
               </a>
             
           </div>
@@ -420,10 +427,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/04/24/Java代码/" rel="prev" title="Java代码">
-                Java代码 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -608,7 +611,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#node-command-not-found或则npm-command-not-found问题"><span class="nav-number">1.</span> <span class="nav-text">node : command not found或则npm : command not found问题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#注意：一定是Node-js的安装目录"><span class="nav-number">1.1.</span> <span class="nav-text">注意：一定是Node.js的安装目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PS：环境变量的解释"><span class="nav-number">1.2.</span> <span class="nav-text">PS：环境变量的解释</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Debian9安装配置Openfire"><span class="nav-number">1.</span> <span class="nav-text">Debian9安装配置Openfire</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#准备工作："><span class="nav-number">1.1.</span> <span class="nav-text">准备工作：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#具体教程："><span class="nav-number">1.2.</span> <span class="nav-text">具体教程：</span></a></li></ol></li></ol></div>
             
 
           </div>

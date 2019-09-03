@@ -88,8 +88,6 @@
 
 
 
-  
-
 
   <link rel="alternate" href="/atom.xml" title="LeoYang's Blog" type="application/atom+xml" />
 
@@ -101,14 +99,14 @@
 <meta name="description" content="Debian9安装配置Openfire在Debian9的服务器中安装并配置Openfire（该教程使用MySQL数据库进行数据存储）">
 <meta name="keywords" content="即时通讯APP开发">
 <meta property="og:type" content="article">
-<meta property="og:title" content="debian9安装配置openfire">
+<meta property="og:title" content="Debian9安装配置Openfire">
 <meta property="og:url" content="http://yoursite.com/2019/09/02/debian9安装配置openfire/index.html">
 <meta property="og:site_name" content="LeoYang&#39;s Blog">
 <meta property="og:description" content="Debian9安装配置Openfire在Debian9的服务器中安装并配置Openfire（该教程使用MySQL数据库进行数据存储）">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-02T09:30:46.288Z">
+<meta property="og:updated_time" content="2019-09-03T07:52:50.275Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="debian9安装配置openfire">
+<meta name="twitter:title" content="Debian9安装配置Openfire">
 <meta name="twitter:description" content="Debian9安装配置Openfire在Debian9的服务器中安装并配置Openfire（该教程使用MySQL数据库进行数据存储）">
 
 
@@ -156,7 +154,7 @@
   daovoice('update');
   </script>
 
-  <title>debian9安装配置openfire | LeoYang's Blog</title>
+  <title>Debian9安装配置Openfire | LeoYang's Blog</title>
   
 
 
@@ -178,7 +176,7 @@
   <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
-    <a href="https://github.com/LeoYHZ" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; left: 0; transform: scale(-1, 1);" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style></a>
+    <a href="https://github.com/LeoYHZ" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
@@ -328,7 +326,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">debian9安装配置openfire</h1>
+          <h1 class="post-title" itemprop="name headline">Debian9安装配置Openfire</h1>
         
 
         <div class="post-meta">
@@ -378,16 +376,24 @@
       
 
       
-        <link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="Debian9安装配置Openfire"><a href="#Debian9安装配置Openfire" class="headerlink" title="Debian9安装配置Openfire"></a>Debian9安装配置Openfire</h1><p>在Debian9的服务器中安装并配置Openfire（该教程使用MySQL数据库进行数据存储）</p>
+        <h1 id="Debian9安装配置Openfire"><a href="#Debian9安装配置Openfire" class="headerlink" title="Debian9安装配置Openfire"></a>Debian9安装配置Openfire</h1><p>在Debian9的服务器中安装并配置Openfire（该教程使用MySQL数据库进行数据存储）</p>
  <a id="more"></a>
 <h2 id="准备工作："><a href="#准备工作：" class="headerlink" title="准备工作："></a>准备工作：</h2><p>1：服务器已经安装MySQL；</p>
 <p>2：服务器已经配置好java环境；</p>
-<h2 id="具体教程："><a href="#具体教程：" class="headerlink" title="具体教程："></a>具体教程：</h2><p>1：Openfire的下载及安装</p>
-<p>在openfire的<a href="http://www.igniterealtime.org/downloads/index.jsp" target="_blank" rel="noopener">下载网站</a>中，有Windows、Linux以及Mac版本的openfire下载，直接下载最新版本（本文更新时为Openfire 4.4.1版本）即可。</p>
+<h2 id="具体教程："><a href="#具体教程：" class="headerlink" title="具体教程："></a>具体教程：</h2><h2 id="1：Openfire的下载及安装"><a href="#1：Openfire的下载及安装" class="headerlink" title="1：Openfire的下载及安装"></a>1：Openfire的下载及安装</h2><p>在openfire的<a href="http://www.igniterealtime.org/downloads/index.jsp" target="_blank" rel="noopener">下载网站</a>中，有Windows、Linux以及Mac版本的openfire下载，直接下载最新版本（本文更新时为Openfire 4.4.1版本）即可。</p>
 <p>官网对Linux发布了不同格式的安装包，对于Debian和Ubuntu的操作系统可以直接下载deb格式的安装包进行安装，本文中使用的是tar.gz的压缩格式进行安装，可以更清晰的了解到所需的配置文件的具体位置。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># deb格式进行安装</span></span><br><span class="line">wget -c http://download.igniterealtime.org/openfire/openfire_4.4.1_all.deb</span><br><span class="line">sudo dpkg -i openfire_4.4.1_all.deb</span><br><span class="line"><span class="comment"># tar.gz格式进行安装</span></span><br><span class="line">wget -c http://download.igniterealtime.org/openfire/openfire_4_4_1.tar.gz</span><br><span class="line">tar -zxvf openfire_4_4_1.tar.gz</span><br></pre></td></tr></table></figure>
-<p>2：配置Openfire</p>
-<p>本文介绍的是使用tar.gz的压缩格式进行安装的Openfire的配置，对于其他安装方式的进行类比即可。</p>
+<h2 id="2：配置Openfire"><a href="#2：配置Openfire" class="headerlink" title="2：配置Openfire"></a>2：配置Openfire</h2><p>本文介绍的是使用tar.gz的压缩格式进行安装的Openfire的配置，对于其他安装方式的进行类比即可。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#启动Openfire，在此之前应确认MySQL处于工作状态</span></span><br><span class="line"><span class="built_in">cd</span> ./openfire/bin</span><br><span class="line">./openfire start</span><br></pre></td></tr></table></figure>
+<p>在浏览器中输入地址（<a href="http://yourserverip:9090），将yourserverip替换为安装Openfire的服务器" target="_blank" rel="noopener">http://yourserverip:9090），将yourserverip替换为安装Openfire的服务器</a> IP即可进入配置界面。</p>
+<p>配置过程按照文字说明继续即可。</p>
+<p>在“<strong>数据库设置</strong>”时选择“<strong>标准数据库连接</strong>”以便使用外部数据库。</p>
+<p>然后在下一步配置数据库中设置数据库类型</p>
+<p><strong>数据库驱动选项—-&gt;MySQL</strong></p>
+<p><strong>JDBC驱动程序类—-&gt;com.mysql.jdbc.Driver</strong></p>
+<p><strong>数据库URL—-&gt;jdbc:mysql://[host-name]:3306/[database-name]?……（问号后面数据无需修改）</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#[host-name]修改为localhost即可</span><br><span class="line">#3306为MySQL数据库的默认端口，根据自己配置情况修改</span><br><span class="line">#[database-name]为建立的数据库名称，我修改为db_openfire</span><br><span class="line">mysql&gt; CREATE DATABASE db_openfire;</span><br><span class="line">Query OK, 1 row affected (0.02 sec)</span><br></pre></td></tr></table></figure>
+<p>用户名以及密码输入访问数据库的用户名和密码即可。</p>
 
       
     </div>
@@ -611,7 +617,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Debian9安装配置Openfire"><span class="nav-number">1.</span> <span class="nav-text">Debian9安装配置Openfire</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#准备工作："><span class="nav-number">1.1.</span> <span class="nav-text">准备工作：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#具体教程："><span class="nav-number">1.2.</span> <span class="nav-text">具体教程：</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Debian9安装配置Openfire"><span class="nav-number">1.</span> <span class="nav-text">Debian9安装配置Openfire</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#准备工作："><span class="nav-number">1.1.</span> <span class="nav-text">准备工作：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#具体教程："><span class="nav-number">1.2.</span> <span class="nav-text">具体教程：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1：Openfire的下载及安装"><span class="nav-number">1.3.</span> <span class="nav-text">1：Openfire的下载及安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2：配置Openfire"><span class="nav-number">1.4.</span> <span class="nav-text">2：配置Openfire</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -653,7 +659,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">| 博客全站共4.6k字</span>
+  <span class="post-count">| 博客全站共4.9k字</span>
 </div>
 
 

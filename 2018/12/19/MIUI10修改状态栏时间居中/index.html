@@ -376,7 +376,7 @@
       
 
       
-        <p>修改坚果Pro2的MIUI10系统上的状态栏</p>
+        <link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>修改坚果Pro2的MIUI10系统上的状态栏</p>
 <a id="more"></a>
 <h1 id="反编译-system-priv-app-MiuiSystemUI"><a href="#反编译-system-priv-app-MiuiSystemUI" class="headerlink" title="反编译/system/priv-app/MiuiSystemUI"></a>反编译/system/priv-app/MiuiSystemUI</h1><p>使用工具:<a href="https://www.coolapk.com/apk/bin.mt.plus" target="_blank" rel="noopener">MT管理器</a>;本教程<a href="https://www.coolapk.com/feed/9414882" target="_blank" rel="noopener">酷安地址</a><br>修改时间居中需要用到MiuiSystemUI.apk/res/layout中的布局文件<br>signal_cluster_view.xml    //信号、WIFI部分<br>status_bar.xml             //状态栏总布局<br>system_icons.xml           //系统通知图标及信号显示<br>下载<a href="https://mi-globe.com/miui-center-clock-mod/" target="_blank" rel="noopener">时间居中</a>，并拆包提取代码。<br>时间:将时间居中代码放到status_bar.xml中替换到原本时间布局即可。<br>信号:将信号居左代码放到status_bar.xml中会在状态栏左边生成信号图标，但是右侧信号并没有消失。<br>去除右侧信号:修改status_bar.xml中的右侧通知布局，使其layout_width=”0dp”,隐藏掉即可。然后创建新布局，把system_icons.xml中布局复制进去，尝试修改其中的layout_width=”0dp”隐藏掉信号即可。</p>
 

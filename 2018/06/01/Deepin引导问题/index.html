@@ -376,7 +376,7 @@
       
 
       
-        <h1 id="Deepin引导问题"><a href="#Deepin引导问题" class="headerlink" title="Deepin引导问题"></a>Deepin引导问题</h1><p>Deepin引导失败原因之一<br><a id="more"></a><br>Deepin引导失败后，在开机界面显示以下文字</p>
+        <link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="Deepin引导问题"><a href="#Deepin引导问题" class="headerlink" title="Deepin引导问题"></a>Deepin引导问题</h1><p>Deepin引导失败原因之一<br><a id="more"></a><br>Deepin引导失败后，在开机界面显示以下文字</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">search.fs_uuid 63940a4a-5f46-4ac7-b196-84c6b22b8338 root hd1,gpt5 </span><br><span class="line">set prefix=($root)&apos;/boot/grub&apos;</span><br><span class="line">configfile $prefix/grub.cfg</span><br></pre></td></tr></table></figure>
 <p>deepin 使用的ubuntu的引导进行美化 所以会产生一个ubuntu的文件夹 不要误删  efi/boot文件夹下的.cfg文件上配置文件  其中的uuid必须对齐对应的分区才能开机（不同电脑 不同系统的uuid不相同 该文字为本机Deepin系统对应的uuid）</p>
 

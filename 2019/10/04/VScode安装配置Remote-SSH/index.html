@@ -87,12 +87,12 @@
 <meta property="og:site_name" content="LeoYang&#39;s Blog">
 <meta property="og:description" content="VScode安装配置Remote-SSH在VScode上面安装Remote-SSH插件对服务器进行远程操作">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="c:/Users/Administrator/AppData/Roaming/Typora/typora-user-images/1570248291329.png">
-<meta property="og:updated_time" content="2019-10-05T05:40:48.735Z">
+<meta property="og:image" content="http://yoursite.com/2019/10/04/VScode安装配置Remote-SSH/VScode安装配置Remote-SSH/1570248291329.png">
+<meta property="og:updated_time" content="2019-10-05T05:47:59.830Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="VScode安装配置Remote-SSH">
 <meta name="twitter:description" content="VScode安装配置Remote-SSH在VScode上面安装Remote-SSH插件对服务器进行远程操作">
-<meta name="twitter:image" content="c:/Users/Administrator/AppData/Roaming/Typora/typora-user-images/1570248291329.png">
+<meta name="twitter:image" content="http://yoursite.com/2019/10/04/VScode安装配置Remote-SSH/VScode安装配置Remote-SSH/1570248291329.png">
 
 
 
@@ -361,7 +361,7 @@
       
 
       
-        <h1 id="VScode安装配置Remote-SSH"><a href="#VScode安装配置Remote-SSH" class="headerlink" title="VScode安装配置Remote-SSH"></a>VScode安装配置Remote-SSH</h1><p>在VScode上面安装Remote-SSH插件对服务器进行远程操作</p>
+        <link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="VScode安装配置Remote-SSH"><a href="#VScode安装配置Remote-SSH" class="headerlink" title="VScode安装配置Remote-SSH"></a>VScode安装配置Remote-SSH</h1><p>在VScode上面安装Remote-SSH插件对服务器进行远程操作</p>
 <a id="more"></a>
 <p>按照默认配置可以直接进行密码登录连接，但是每次打开新文件夹都要重新输入密码，比较麻烦，所以修改为了使用公钥进行登录。</p>
 <h2 id="1-Windows端配置"><a href="#1-Windows端配置" class="headerlink" title="1.Windows端配置"></a>1.Windows端配置</h2><p>​    Windows端的配置很简单，但是因为我使用Hexo搭建博客的时候默认生成了密钥在<strong>C:\Users\Administrator\.ssh</strong>文件夹内，直接使用该公钥进行连接的时候会有问题，提示存在指纹校验码，但是无法通过其进行登录，会导致密码登录也失效。</p>
@@ -382,7 +382,7 @@
 <li><p>配置remote-ssh模块</p>
 <p>​    在VScode中使用<strong>Ctrl+Shift+P</strong>打开搜索，输入<strong>Remote-SSH:Settings</strong>，然后打开即可。</p>
 <p>修改<strong>Remote.SSH: Config File</strong>这一项为<strong>C:\ProgramData\ssh\ssh_config</strong>（该配置文件位置可以修改，保证格式正确即可）。</p>
-<p><img src="C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\1570248291329.png" alt="1570248291329"></p>
+<p><img src="VScode安装配置Remote-SSH\1570248291329.png" alt="1570248291329"></p>
 </li>
 </ol>
 <h2 id="2-服务器端配置"><a href="#2-服务器端配置" class="headerlink" title="2.服务器端配置"></a>2.服务器端配置</h2><ol>

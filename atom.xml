@@ -5,9 +5,9 @@
   <subtitle>I&#39;m missing you.</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://yoursite.com/"/>
+  <link href="https://github.com/LeoYHZ/leoyhz.github.io/tree/master/"/>
   <updated>2019-10-05T05:47:59.830Z</updated>
-  <id>http://yoursite.com/</id>
+  <id>https://github.com/LeoYHZ/leoyhz.github.io/tree/master/</id>
   
   <author>
     <name>Leo Yang</name>
@@ -18,12 +18,12 @@
   
   <entry>
     <title>VScode安装配置Remote-SSH</title>
-    <link href="http://yoursite.com/2019/10/04/VScode%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AERemote-SSH/"/>
-    <id>http://yoursite.com/2019/10/04/VScode安装配置Remote-SSH/</id>
+    <link href="https://github.com/LeoYHZ/leoyhz.github.io/tree/master/2019/10/04/VScode%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AERemote-SSH/"/>
+    <id>https://github.com/LeoYHZ/leoyhz.github.io/tree/master/2019/10/04/VScode安装配置Remote-SSH/</id>
     <published>2019-10-04T15:09:12.180Z</published>
     <updated>2019-10-05T05:47:59.830Z</updated>
     
-    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="VScode安装配置Remote-SSH"><a href="#VScode安装配置Remote-SSH" class="headerlink" title="VScode安装配置Remote-SSH"></a>VScode安装配置Remote-SSH</h1><p>在VScode上面安装Remote-SSH插件对服务器进行远程操作</p><a id="more"></a><p>按照默认配置可以直接进行密码登录连接，但是每次打开新文件夹都要重新输入密码，比较麻烦，所以修改为了使用公钥进行登录。</p><h2 id="1-Windows端配置"><a href="#1-Windows端配置" class="headerlink" title="1.Windows端配置"></a>1.Windows端配置</h2><p>​    Windows端的配置很简单，但是因为我使用Hexo搭建博客的时候默认生成了密钥在<strong>C:\Users\Administrator\.ssh</strong>文件夹内，直接使用该公钥进行连接的时候会有问题，提示存在指纹校验码，但是无法通过其进行登录，会导致密码登录也失效。</p><ol><li><p>生成SSH密钥</p><p>​    在CMD窗口输入命令</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -b 4096</span><br></pre></td></tr></table></figure><p>期间会让你选择文件夹，默认为<strong>C:\Users\Administrator\.ssh</strong>，但是这里我修改为了<strong>C:\ProgramData\ssh</strong>，其余各项直接默认回车即可。</p></li><li><p>修改SSH配置文件</p><p>​    安装完成Remote-SSH后，选择配置文件（默认有两个文件<strong>C:\Users\Administrator\.ssh\ssh_config</strong>和<strong>C:\ProgramData\ssh\ssh_config</strong>），此次选择后者，</p><p>原因见文章开头。</p><p>​    修改配置内容ssh_config为</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Read more about SSH config files: https://linux.die.net/man/5/ssh_config</span></span><br><span class="line">Host 腾讯云</span><br><span class="line">  HostName xxx.xx.xx.xxx <span class="comment">#服务器IP地址</span></span><br><span class="line">  User root</span><br><span class="line">  IdentityFile C:\ProgramData\ssh\id_rsa</span><br></pre></td></tr></table></figure><p>即可。</p><p>​    一定要加上最后一行<strong>IdentityFile C:\ProgramData\ssh\id_rsa</strong>，即IdentifyFile跟上私钥路径，否则会导致即使配置完成，也无法进行公钥免密登录的问题。</p></li><li><p>配置remote-ssh模块</p><p>​    在VScode中使用<strong>Ctrl+Shift+P</strong>打开搜索，输入<strong>Remote-SSH:Settings</strong>，然后打开即可。</p><p>修改<strong>Remote.SSH: Config File</strong>这一项为<strong>C:\ProgramData\ssh\ssh_config</strong>（该配置文件位置可以修改，保证格式正确即可）。</p><p><img src="//yoursite.com/2019/10/04/VScode安装配置Remote-SSH/1570248291329.png" alt="1570248291329"></p></li></ol><h2 id="2-服务器端配置"><a href="#2-服务器端配置" class="headerlink" title="2.服务器端配置"></a>2.服务器端配置</h2><ol><li><p>修改SSH配置文件</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root@VM-0-2-debian:~<span class="comment"># sudo vim /etc/ssh/sshd_config</span></span><br></pre></td></tr></table></figure><p>修改文件部分内容如下（取消注释即可）</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">RSAAuthentication yes</span><br><span class="line">PubkeyAuthentication yes</span><br><span class="line">AuthorizedKeysFile .ssh/authorized_keys</span><br></pre></td></tr></table></figure><p>然后重启SSH即可。</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root@VM-0-2-debian:~<span class="comment"># sudo service sshd restart</span></span><br></pre></td></tr></table></figure></li><li><p>将公钥加入authorized_keys文件中</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root@VM-0-2-debian:~<span class="comment"># sudo vim ~/.ssh/authorized_keys</span></span><br></pre></td></tr></table></figure><p>将Windows下的<strong>C:\ProgramData\ssh\id_rsa.pub</strong>内容复制到authorized_keys文件中即可。</p></li></ol>]]></content>
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="VScode安装配置Remote-SSH"><a href="#VScode安装配置Remote-SSH" class="headerlink" title="VScode安装配置Remote-SSH"></a>VScode安装配置Remote-SSH</h1><p>在VScode上面安装Remote-SSH插件对服务器进行远程操作</p><a id="more"></a><p>按照默认配置可以直接进行密码登录连接，但是每次打开新文件夹都要重新输入密码，比较麻烦，所以修改为了使用公钥进行登录。</p><h2 id="1-Windows端配置"><a href="#1-Windows端配置" class="headerlink" title="1.Windows端配置"></a>1.Windows端配置</h2><p>​    Windows端的配置很简单，但是因为我使用Hexo搭建博客的时候默认生成了密钥在<strong>C:\Users\Administrator\.ssh</strong>文件夹内，直接使用该公钥进行连接的时候会有问题，提示存在指纹校验码，但是无法通过其进行登录，会导致密码登录也失效。</p><ol><li><p>生成SSH密钥</p><p>​    在CMD窗口输入命令</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -b 4096</span><br></pre></td></tr></table></figure><p>期间会让你选择文件夹，默认为<strong>C:\Users\Administrator\.ssh</strong>，但是这里我修改为了<strong>C:\ProgramData\ssh</strong>，其余各项直接默认回车即可。</p></li><li><p>修改SSH配置文件</p><p>​    安装完成Remote-SSH后，选择配置文件（默认有两个文件<strong>C:\Users\Administrator\.ssh\ssh_config</strong>和<strong>C:\ProgramData\ssh\ssh_config</strong>），此次选择后者，</p><p>原因见文章开头。</p><p>​    修改配置内容ssh_config为</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Read more about SSH config files: https://linux.die.net/man/5/ssh_config</span></span><br><span class="line">Host 腾讯云</span><br><span class="line">  HostName xxx.xx.xx.xxx <span class="comment">#服务器IP地址</span></span><br><span class="line">  User root</span><br><span class="line">  IdentityFile C:\ProgramData\ssh\id_rsa</span><br></pre></td></tr></table></figure><p>即可。</p><p>​    一定要加上最后一行<strong>IdentityFile C:\ProgramData\ssh\id_rsa</strong>，即IdentifyFile跟上私钥路径，否则会导致即使配置完成，也无法进行公钥免密登录的问题。</p></li><li><p>配置remote-ssh模块</p><p>​    在VScode中使用<strong>Ctrl+Shift+P</strong>打开搜索，输入<strong>Remote-SSH:Settings</strong>，然后打开即可。</p><p>修改<strong>Remote.SSH: Config File</strong>这一项为<strong>C:\ProgramData\ssh\ssh_config</strong>（该配置文件位置可以修改，保证格式正确即可）。</p><p><img src="/LeoYHZ/leoyhz.github.io/tree/master/2019/10/04/VScode安装配置Remote-SSH/1570248291329.png" alt="1570248291329"></p></li></ol><h2 id="2-服务器端配置"><a href="#2-服务器端配置" class="headerlink" title="2.服务器端配置"></a>2.服务器端配置</h2><ol><li><p>修改SSH配置文件</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root@VM-0-2-debian:~<span class="comment"># sudo vim /etc/ssh/sshd_config</span></span><br></pre></td></tr></table></figure><p>修改文件部分内容如下（取消注释即可）</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">RSAAuthentication yes</span><br><span class="line">PubkeyAuthentication yes</span><br><span class="line">AuthorizedKeysFile .ssh/authorized_keys</span><br></pre></td></tr></table></figure><p>然后重启SSH即可。</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root@VM-0-2-debian:~<span class="comment"># sudo service sshd restart</span></span><br></pre></td></tr></table></figure></li><li><p>将公钥加入authorized_keys文件中</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root@VM-0-2-debian:~<span class="comment"># sudo vim ~/.ssh/authorized_keys</span></span><br></pre></td></tr></table></figure><p>将Windows下的<strong>C:\ProgramData\ssh\id_rsa.pub</strong>内容复制到authorized_keys文件中即可。</p></li></ol>]]></content>
     
     <summary type="html">
     
@@ -32,14 +32,14 @@
     </summary>
     
     
-      <category term="开发环境配置" scheme="http://yoursite.com/tags/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/"/>
+      <category term="开发环境配置" scheme="https://github.com/LeoYHZ/leoyhz.github.io/tree/master/tags/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/"/>
     
   </entry>
   
   <entry>
     <title>Debian9安装配置Openfire</title>
-    <link href="http://yoursite.com/2019/09/02/debian9%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEopenfire/"/>
-    <id>http://yoursite.com/2019/09/02/debian9安装配置openfire/</id>
+    <link href="https://github.com/LeoYHZ/leoyhz.github.io/tree/master/2019/09/02/debian9%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEopenfire/"/>
+    <id>https://github.com/LeoYHZ/leoyhz.github.io/tree/master/2019/09/02/debian9安装配置openfire/</id>
     <published>2019-09-02T09:02:03.000Z</published>
     <updated>2019-09-03T07:52:50.275Z</updated>
     
@@ -52,14 +52,14 @@
     </summary>
     
     
-      <category term="即时通讯APP开发" scheme="http://yoursite.com/tags/%E5%8D%B3%E6%97%B6%E9%80%9A%E8%AE%AFAPP%E5%BC%80%E5%8F%91/"/>
+      <category term="即时通讯APP开发" scheme="https://github.com/LeoYHZ/leoyhz.github.io/tree/master/tags/%E5%8D%B3%E6%97%B6%E9%80%9A%E8%AE%AFAPP%E5%BC%80%E5%8F%91/"/>
     
   </entry>
   
   <entry>
     <title>Linux同步时间</title>
-    <link href="http://yoursite.com/2019/07/10/Linux%E5%90%8C%E6%AD%A5%E6%97%B6%E9%97%B4/"/>
-    <id>http://yoursite.com/2019/07/10/Linux同步时间/</id>
+    <link href="https://github.com/LeoYHZ/leoyhz.github.io/tree/master/2019/07/10/Linux%E5%90%8C%E6%AD%A5%E6%97%B6%E9%97%B4/"/>
+    <id>https://github.com/LeoYHZ/leoyhz.github.io/tree/master/2019/07/10/Linux同步时间/</id>
     <published>2019-07-10T15:19:17.705Z</published>
     <updated>2019-09-03T07:54:58.714Z</updated>
     
@@ -72,14 +72,14 @@
     </summary>
     
     
-      <category term="Linux问题记录" scheme="http://yoursite.com/tags/Linux%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95/"/>
+      <category term="Linux问题记录" scheme="https://github.com/LeoYHZ/leoyhz.github.io/tree/master/tags/Linux%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95/"/>
     
   </entry>
   
   <entry>
     <title>Test</title>
-    <link href="http://yoursite.com/2019/04/24/Test/"/>
-    <id>http://yoursite.com/2019/04/24/Test/</id>
+    <link href="https://github.com/LeoYHZ/leoyhz.github.io/tree/master/2019/04/24/Test/"/>
+    <id>https://github.com/LeoYHZ/leoyhz.github.io/tree/master/2019/04/24/Test/</id>
     <published>2019-04-24T03:06:21.746Z</published>
     <updated>2019-09-03T07:56:12.938Z</updated>
     
@@ -92,14 +92,14 @@
     </summary>
     
     
-      <category term="Test" scheme="http://yoursite.com/tags/Test/"/>
+      <category term="Test" scheme="https://github.com/LeoYHZ/leoyhz.github.io/tree/master/tags/Test/"/>
     
   </entry>
   
   <entry>
     <title>MIUI10修改状态栏时间居中</title>
-    <link href="http://yoursite.com/2018/12/19/MIUI10%E4%BF%AE%E6%94%B9%E7%8A%B6%E6%80%81%E6%A0%8F%E6%97%B6%E9%97%B4%E5%B1%85%E4%B8%AD/"/>
-    <id>http://yoursite.com/2018/12/19/MIUI10修改状态栏时间居中/</id>
+    <link href="https://github.com/LeoYHZ/leoyhz.github.io/tree/master/2018/12/19/MIUI10%E4%BF%AE%E6%94%B9%E7%8A%B6%E6%80%81%E6%A0%8F%E6%97%B6%E9%97%B4%E5%B1%85%E4%B8%AD/"/>
+    <id>https://github.com/LeoYHZ/leoyhz.github.io/tree/master/2018/12/19/MIUI10修改状态栏时间居中/</id>
     <published>2018-12-19T06:44:06.548Z</published>
     <updated>2018-12-19T06:46:22.805Z</updated>
     
@@ -112,14 +112,14 @@
     </summary>
     
     
-      <category term="安卓UI" scheme="http://yoursite.com/tags/%E5%AE%89%E5%8D%93UI/"/>
+      <category term="安卓UI" scheme="https://github.com/LeoYHZ/leoyhz.github.io/tree/master/tags/%E5%AE%89%E5%8D%93UI/"/>
     
   </entry>
   
   <entry>
     <title>Deepin引导问题</title>
-    <link href="http://yoursite.com/2018/06/01/Deepin%E5%BC%95%E5%AF%BC%E9%97%AE%E9%A2%98/"/>
-    <id>http://yoursite.com/2018/06/01/Deepin引导问题/</id>
+    <link href="https://github.com/LeoYHZ/leoyhz.github.io/tree/master/2018/06/01/Deepin%E5%BC%95%E5%AF%BC%E9%97%AE%E9%A2%98/"/>
+    <id>https://github.com/LeoYHZ/leoyhz.github.io/tree/master/2018/06/01/Deepin引导问题/</id>
     <published>2018-06-01T12:02:30.431Z</published>
     <updated>2019-09-03T07:55:48.029Z</updated>
     
@@ -132,14 +132,14 @@
     </summary>
     
     
-      <category term="Linux问题记录" scheme="http://yoursite.com/tags/Linux%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95/"/>
+      <category term="Linux问题记录" scheme="https://github.com/LeoYHZ/leoyhz.github.io/tree/master/tags/Linux%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95/"/>
     
   </entry>
   
   <entry>
     <title>Java笔记</title>
-    <link href="http://yoursite.com/2018/06/01/Java%E7%AC%94%E8%AE%B0/"/>
-    <id>http://yoursite.com/2018/06/01/Java笔记/</id>
+    <link href="https://github.com/LeoYHZ/leoyhz.github.io/tree/master/2018/06/01/Java%E7%AC%94%E8%AE%B0/"/>
+    <id>https://github.com/LeoYHZ/leoyhz.github.io/tree/master/2018/06/01/Java笔记/</id>
     <published>2018-06-01T11:54:15.374Z</published>
     <updated>2019-09-03T07:53:47.334Z</updated>
     
@@ -152,14 +152,14 @@
     </summary>
     
     
-      <category term="Java学习记录" scheme="http://yoursite.com/tags/Java%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
+      <category term="Java学习记录" scheme="https://github.com/LeoYHZ/leoyhz.github.io/tree/master/tags/Java%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
     
   </entry>
   
   <entry>
     <title>Java代码</title>
-    <link href="http://yoursite.com/2018/04/24/Java%E4%BB%A3%E7%A0%81/"/>
-    <id>http://yoursite.com/2018/04/24/Java代码/</id>
+    <link href="https://github.com/LeoYHZ/leoyhz.github.io/tree/master/2018/04/24/Java%E4%BB%A3%E7%A0%81/"/>
+    <id>https://github.com/LeoYHZ/leoyhz.github.io/tree/master/2018/04/24/Java代码/</id>
     <published>2018-04-24T15:08:53.679Z</published>
     <updated>2019-09-02T09:30:34.638Z</updated>
     
@@ -172,14 +172,14 @@
     </summary>
     
     
-      <category term="Java学习记录" scheme="http://yoursite.com/tags/Java%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
+      <category term="Java学习记录" scheme="https://github.com/LeoYHZ/leoyhz.github.io/tree/master/tags/Java%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
     
   </entry>
   
   <entry>
     <title>hexo command not found</title>
-    <link href="http://yoursite.com/2018/04/15/hexo%20command%20not%20found/"/>
-    <id>http://yoursite.com/2018/04/15/hexo command not found/</id>
+    <link href="https://github.com/LeoYHZ/leoyhz.github.io/tree/master/2018/04/15/hexo%20command%20not%20found/"/>
+    <id>https://github.com/LeoYHZ/leoyhz.github.io/tree/master/2018/04/15/hexo command not found/</id>
     <published>2018-04-14T16:12:38.539Z</published>
     <updated>2018-04-26T07:32:25.314Z</updated>
     
@@ -192,14 +192,14 @@
     </summary>
     
     
-      <category term="hexo bug" scheme="http://yoursite.com/tags/hexo-bug/"/>
+      <category term="hexo bug" scheme="https://github.com/LeoYHZ/leoyhz.github.io/tree/master/tags/hexo-bug/"/>
     
   </entry>
   
   <entry>
     <title>多系统同步Hexo博客</title>
-    <link href="http://yoursite.com/2018/03/25/%E5%A4%9A%E7%B3%BB%E7%BB%9F%E5%90%8C%E6%AD%A5Hexo%E5%8D%9A%E5%AE%A2/"/>
-    <id>http://yoursite.com/2018/03/25/多系统同步Hexo博客/</id>
+    <link href="https://github.com/LeoYHZ/leoyhz.github.io/tree/master/2018/03/25/%E5%A4%9A%E7%B3%BB%E7%BB%9F%E5%90%8C%E6%AD%A5Hexo%E5%8D%9A%E5%AE%A2/"/>
+    <id>https://github.com/LeoYHZ/leoyhz.github.io/tree/master/2018/03/25/多系统同步Hexo博客/</id>
     <published>2018-03-25T15:32:07.954Z</published>
     <updated>2018-04-05T15:20:33.542Z</updated>
     
@@ -212,14 +212,14 @@
     </summary>
     
     
-      <category term="多系统" scheme="http://yoursite.com/tags/%E5%A4%9A%E7%B3%BB%E7%BB%9F/"/>
+      <category term="多系统" scheme="https://github.com/LeoYHZ/leoyhz.github.io/tree/master/tags/%E5%A4%9A%E7%B3%BB%E7%BB%9F/"/>
     
   </entry>
   
   <entry>
     <title>密码浏览</title>
-    <link href="http://yoursite.com/2018/03/24/%E5%AF%86%E7%A0%81%E6%B5%8F%E8%A7%88/"/>
-    <id>http://yoursite.com/2018/03/24/密码浏览/</id>
+    <link href="https://github.com/LeoYHZ/leoyhz.github.io/tree/master/2018/03/24/%E5%AF%86%E7%A0%81%E6%B5%8F%E8%A7%88/"/>
+    <id>https://github.com/LeoYHZ/leoyhz.github.io/tree/master/2018/03/24/密码浏览/</id>
     <published>2018-03-24T07:25:08.000Z</published>
     <updated>2019-10-04T15:10:04.709Z</updated>
     
@@ -232,22 +232,22 @@
     </summary>
     
     
-      <category term="测试" scheme="http://yoursite.com/tags/%E6%B5%8B%E8%AF%95/"/>
+      <category term="测试" scheme="https://github.com/LeoYHZ/leoyhz.github.io/tree/master/tags/%E6%B5%8B%E8%AF%95/"/>
     
   </entry>
   
   <entry>
     <title>Hello World</title>
-    <link href="http://yoursite.com/2018/03/20/hello-world/"/>
-    <id>http://yoursite.com/2018/03/20/hello-world/</id>
+    <link href="https://github.com/LeoYHZ/leoyhz.github.io/tree/master/2018/03/20/hello-world/"/>
+    <id>https://github.com/LeoYHZ/leoyhz.github.io/tree/master/2018/03/20/hello-world/</id>
     <published>2018-03-20T12:55:34.300Z</published>
     <updated>2018-04-26T09:38:14.808Z</updated>
     
-    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>欢迎来到<a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>！这是你的第一篇文章。点击<a href="https://hexo.io/docs/" target="_blank" rel="noopener">文档</a>获取更多信息。如果你使用Hexo时有任何问题,你可以在<a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">该网址</a>上找到解决方案或者在<a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>上询问我。</p><a id="more"></a><h2 id="快速启动"><a href="#快速启动" class="headerlink" title="快速启动"></a>快速启动</h2><h3 id="创建一个新的帖子"><a href="#创建一个新的帖子" class="headerlink" title="创建一个新的帖子"></a>创建一个新的帖子</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure><p>更多信息: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">write</a></p><h3 id="运行服务器"><a href="#运行服务器" class="headerlink" title="运行服务器"></a>运行服务器</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>更多信息: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="生成静态文件"><a href="#生成静态文件" class="headerlink" title="生成静态文件"></a>生成静态文件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>更多信息: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="部署到远程站点"><a href="#部署到远程站点" class="headerlink" title="部署到远程站点"></a>部署到远程站点</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>更多信息: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>欢迎来到<a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>！这是你的第一篇文章。点击<a href="https://hexo.io/docs/" target="_blank" rel="noopener">文档</a>获取更多信息。如果你使用Hexo时有任何问题,你可以在<a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">该网址</a>上找到解决方案或者在<a href="https://github.com/hexojs/hexo/issues">GitHub</a>上询问我。</p><a id="more"></a><h2 id="快速启动"><a href="#快速启动" class="headerlink" title="快速启动"></a>快速启动</h2><h3 id="创建一个新的帖子"><a href="#创建一个新的帖子" class="headerlink" title="创建一个新的帖子"></a>创建一个新的帖子</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure><p>更多信息: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">write</a></p><h3 id="运行服务器"><a href="#运行服务器" class="headerlink" title="运行服务器"></a>运行服务器</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>更多信息: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="生成静态文件"><a href="#生成静态文件" class="headerlink" title="生成静态文件"></a>生成静态文件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>更多信息: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="部署到远程站点"><a href="#部署到远程站点" class="headerlink" title="部署到远程站点"></a>部署到远程站点</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>更多信息: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;欢迎来到&lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;！这是你的第一篇文章。点击&lt;a href=&quot;https://hexo.io/docs/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;文档&lt;/a&gt;获取更多信息。如果你使用Hexo时有任何问题,你可以在&lt;a href=&quot;https://hexo.io/docs/troubleshooting.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;该网址&lt;/a&gt;上找到解决方案或者在&lt;a href=&quot;https://github.com/hexojs/hexo/issues&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;GitHub&lt;/a&gt;上询问我。&lt;/p&gt;
+      &lt;p&gt;欢迎来到&lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;！这是你的第一篇文章。点击&lt;a href=&quot;https://hexo.io/docs/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;文档&lt;/a&gt;获取更多信息。如果你使用Hexo时有任何问题,你可以在&lt;a href=&quot;https://hexo.io/docs/troubleshooting.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;该网址&lt;/a&gt;上找到解决方案或者在&lt;a href=&quot;https://github.com/hexojs/hexo/issues&quot;&gt;GitHub&lt;/a&gt;上询问我。&lt;/p&gt;
     
     </summary>
     
